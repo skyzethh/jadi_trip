@@ -11,47 +11,47 @@
     </div>
 
     <div class="sidebar">
-        <a href="/Dashboard" id="dashboard" class="{{ Request::is('Dashboard') ? 'active' : '' }}">
+        <a href="/Dashboard">
             <span class="material-icons-sharp"> dashboard </span>
             <h3>Dashboard</h3>
         </a>
-        <a href="/profil" id="profile" class="{{ Request::is('profil') ? 'active' : '' }}">
+        <a href="#">
             <span class="material-icons-sharp">
                 person_outline
             </span>
             <h3>Profile</h3>
         </a>
-        <a href="postingan" id="postingan" class="{{ Request::is('postingan', 'tambahpostingan') ? 'active' : '' }}">
+        <a href="#">
             <span class="material-icons-sharp">
                 post_add
             </span>
             <h3>Post</h3>
             <span class="message-count">1</span>
         </a>
-        <a href="paket_wisata" class="{{ Request::is('paket_wisata') ? 'active' : '' }}">
+        <a href="#">
             <span class="material-icons-sharp">
                 card_travel
             </span>
             <h3>Paket Wisata</h3>
         </a>
-        <a href="statistik" class="{{ Request::is('statistik') ? 'active' : '' }}">
+        <a href="#" class="active">
             <span class="material-icons-sharp"> insights </span>
             <h3>Statistik</h3>
         </a>
 
-        <a href="open_trip" class="{{ Request::is('open_trip') ? 'active' : '' }}">
+        <a href="#">
             <span class="material-icons-sharp">
                 flight
             </span>
             <h3>Open Trip</h3>
         </a>
-        <a href="iklan" class="{{ Request::is('iklan') ? 'active' : '' }}">
+        <a href="#">
             <span class="material-icons-sharp">
                 format_align_left
             </span>
             <h3>Iklan</h3>
         </a>
-        <a href="contact" class="{{ Request::is('contact') ? 'active' : '' }}">
+        <a href="#">
             <span class="material-icons-sharp">
                 contacts
             </span>
@@ -64,11 +64,3 @@
     </div>
 </aside>
 <!-- End of Sidebar Section -->
-
-<script>
-    $(document).ready(function() {
-        $("#profile").click(function() {
-            $("#profile").addClass("active");
-        });
-    });
-</script>

@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +16,25 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [HomeController::class, 'index']);
+
 Route::get('/blog', function () {
     return view('blog');
+})->name('blog');
+Route::get('/login', function(){
+return view('auth/login');
+});
+Route::get('/register', function(){
+    return view('auth/register');
+});
+Route::get('/info', function(){
+    return view('auth/lengkap_data');
+});
+Route::get('/verify', function(){
+    return view('auth/verifikasi');
+});
+Route::get('/paket', function(){
+    return view('paket');
 });
 Route::get('/about', function () {
     return view('about');
@@ -35,29 +49,22 @@ Route::get('/article', function () {
     return view('article');
 });
 
-// AUTH LOGIN REGISTER
+// auth route
 Route::get('/login', function () {
     return view('auth.login');
 });
+// Route::get('/register', [AuthController::class, 'index']);
+// Route::post('/register', [AuthController::class, 'register']);
+
 Route::get('/register', function () {
-    return view('auth.register');
+    return view('auth.coba');
 });
-Route::get('/verifikasi', function () {
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/temp-home', [HomeController::class, 'verifyOtp']);
+Route::get('/verify-otp-page', function () {
     return view('auth.verifikasi');
 });
+Route::post('/verified', [AuthController::class, 'verified']);
 
-// ADMIN ROUTES
-Route::get('/backend', function () {
-    return view('admin.index');
-});
-
-Route::get('/Dashboard', [AdminController::class, 'Dashboard']);
-
-Route::get('/profil', [ProfileController::class, 'index']);
-
-Route::get('/postingan', [PostController::class, 'index']);
-Route::get('/tambahpostingan', [PostController::class, 'TambahPostingan']);
-
-Route::post('/upload', [PostController::class, 'upload'])->name('ckeditor.upload');
-
-
+Route::get('/logout', [AuthController::class, 'logout']);
